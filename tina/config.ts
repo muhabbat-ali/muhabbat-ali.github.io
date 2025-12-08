@@ -1,123 +1,123 @@
-import { CATEGORIES } from '../src/data/categories.ts'
-import { defineConfig } from 'tinacms'
+import { CATEGORIES } from "../src/data/categories.ts";
+import { defineConfig } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
-const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || 'main'
+const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
 export default defineConfig({
-	branch,
-	clientId: process.env.PUBLIC_TINA_CLIENT_ID, // Get this from tina.io
-	token: process.env.TINA_TOKEN, // Get this from tina.io
+  branch,
+  clientId: process.env.PUBLIC_TINA_CLIENT_ID, // Get this from tina.io
+  token: process.env.TINA_TOKEN, // Get this from tina.io
 
-	build: {
-		outputFolder: 'admin',
-		publicFolder: 'public'
-	},
-	media: {
-		tina: {
-			mediaRoot: '/src/assets/images',
-			publicFolder: ''
-		}
-	},
-	schema: {
-		collections: [
-			{
-				name: 'post',
-				label: 'Blog Post',
-				path: 'src/content/blog',
-				format: 'mdx',
-				fields: [
-					{
-						name: 'draft',
-						label: 'Draft',
-						type: 'boolean',
-						description: 'If this is checked the post will not be published'
-					},
-					{
-						type: 'image',
-						label: 'Cover Image',
-						required: true,
-						name: 'heroImage',
-						description: 'The image used for the cover of the post'
-					},
-					{
-						type: 'string',
-						name: 'title',
-						label: 'Title',
-						isTitle: true,
-						required: true
-					},
-					{
-						type: 'string',
-						required: true,
-						name: 'category',
-						label: 'Category',
-						description: 'Select an category for this post',
-						options: [...CATEGORIES]
-					},
-					{
-						type: 'string',
-						label: 'Description',
-						required: true,
-						name: 'description',
-						description: 'A short description of the post'
-					},
-					{
-						type: 'datetime',
-						name: 'pubDate',
-						label: 'Publication Date',
-						required: true
-					},
-					{
-						type: 'rich-text',
-						label: 'Body',
-						name: 'SButton',
-						isBody: true,
-						templates: [
-							// Custom Components
-							{
-								label: 'SButton',
-								name: 'SButton',
-								fields: [
-									{
-										type: 'rich-text',
-										label: 'SButton',
-										name: 'children',
-										isBody: true
-									}
-								]
-							}
-						]
-					},
-					{
-						type: 'string',
-						name: 'tags',
-						required: true,
-						label: 'Tags',
-						description: 'Tags for this post',
-						list: true,
-						ui: {
-							component: 'tags'
-						}
-					},
-					{
-						type: 'string',
-						name: 'keywords',
-						required: true,
-						label: 'Keywords',
-						description: 'Keywords for meta tag',
-						list: true
-						// ui: {
-						// 	component: 'tags'
-						// }
-					}
-				]
-			},
+  build: {
+    outputFolder: "admin",
+    publicFolder: "public",
+  },
+  media: {
+    tina: {
+      mediaRoot: "/src/assets/images",
+      publicFolder: "",
+    },
+  },
+  schema: {
+    collections: [
+      {
+        name: "post",
+        label: "Blog Post",
+        path: "src/content/blog",
+        format: "mdx",
+        fields: [
+          {
+            name: "draft",
+            label: "Draft",
+            type: "boolean",
+            description: "If this is checked the post will not be published",
+          },
+          {
+            type: "image",
+            label: "Cover Image",
+            required: true,
+            name: "heroImage",
+            description: "The image used for the cover of the post",
+          },
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            required: true,
+            name: "category",
+            label: "Category",
+            description: "Select an category for this post",
+            options: [...CATEGORIES],
+          },
+          {
+            type: "string",
+            label: "Description",
+            required: true,
+            name: "description",
+            description: "A short description of the post",
+          },
+          {
+            type: "datetime",
+            name: "pubDate",
+            label: "Publication Date",
+            required: true,
+          },
+          {
+            type: "rich-text",
+            label: "Body",
+            name: "SButton",
+            isBody: true,
+            templates: [
+              // Custom Components
+              {
+                label: "SButton",
+                name: "SButton",
+                fields: [
+                  {
+                    type: "rich-text",
+                    label: "SButton",
+                    name: "children",
+                    isBody: true,
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "string",
+            name: "tags",
+            required: true,
+            label: "Tags",
+            description: "Tags for this post",
+            list: true,
+            ui: {
+              component: "tags",
+            },
+          },
+          {
+            type: "string",
+            name: "keywords",
+            required: true,
+            label: "Keywords",
+            description: "Keywords for meta tag",
+            list: true,
+            // ui: {
+            // 	component: 'tags'
+            // }
+          },
+        ],
+      },
       {
         name: "services",
         label: "Services",
         path: "src/content/services",
-        format: 'mdx',
+        format: "mdx",
         fields: [
           {
             type: "string",
@@ -127,66 +127,66 @@ export default defineConfig({
             required: true,
           },
           {
-						type: 'string',
-						name: 'category',
-						label: 'Category',
-						description: 'Select an category for this post',
-						options: [...CATEGORIES]
-					},
+            type: "string",
+            name: "category",
+            label: "Category",
+            description: "Select an category for this post",
+            options: [...CATEGORIES],
+          },
           {
-						type: 'image',
-						label: 'Thumbnail Image',
-						required: true,
-						name: 'thumbnail',
-						description: 'The image used for the cover of the post',
-					},
-         
+            type: "image",
+            label: "Thumbnail Image",
+            required: true,
+            name: "thumbnail",
+            description: "The image used for the cover of the post",
+          },
+
           {
-						type: 'rich-text',
-						label: 'Body',
-						name: 'SButton',
-						isBody: true,
-						templates: [
-							{
-								label: 'SButton',
-								name: 'SButton',
-								fields: [
-									{
-										type: 'rich-text',
-										label: 'SButton',
-										name: 'children',
-										isBody: true
-									}
-								]
-							}
-						]
-					},
+            type: "rich-text",
+            label: "Body",
+            name: "SButton",
+            isBody: true,
+            templates: [
+              {
+                label: "SButton",
+                name: "SButton",
+                fields: [
+                  {
+                    type: "rich-text",
+                    label: "SButton",
+                    name: "children",
+                    isBody: true,
+                  },
+                ],
+              },
+            ],
+          },
           {
             type: "string",
             name: "link",
             label: "Link",
             required: true,
           },
-           {
+          {
             type: "string",
             name: "description",
             label: "Description",
             required: true,
           },
           {
-						type: 'string',
-						name: 'tags',
-						required: true,
-						label: 'Tags',
-						description: 'Tags for this post',
-						list: true,
-						ui: {
-							component: 'tags'
-						}
-					},
+            type: "string",
+            name: "tags",
+            required: true,
+            label: "Tags",
+            description: "Tags for this post",
+            list: true,
+            ui: {
+              component: "tags",
+            },
+          },
         ],
       },
-			{
+      {
         name: "project",
         label: "Projects",
         path: "src/content/projects",
@@ -225,14 +225,21 @@ export default defineConfig({
             type: "string",
             name: "link",
             required: false,
-          }
+          },
         ],
       },
       {
         name: "experience",
         label: "Experience",
-        path: "content/experience",
+        path: "src/content/experiences",
+        format: "md",
         fields: [
+          {
+            type: "string",
+            name: "company",
+            label: "Company",
+            required: true,
+          },
           {
             type: "string",
             name: "role",
@@ -242,33 +249,148 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "company",
-            label: "Company",
+            name: "logo",
+            label: "Logo",
             required: true,
           },
           {
-            type: "datetime",
-            name: "startFrom",
-            label: "Starting From",
+            type: "string",
+            name: "startDate",
+            label: "Start Date",
             required: true,
           },
           {
-            type: "datetime",
-            name: "endedTo",
-            label: "Ended To",
+            type: "string",
+            name: "endDate",
+            label: "End Date",
             required: false,
           },
           {
             type: "boolean",
-            name: "isWorking",
+            name: "current",
             label: "Currently Working?",
             required: false,
           },
           {
-            type: 'image',
-            name: 'logo',
-            label: 'Logo',
-            required: true
+            type: "number",
+            name: "order",
+            label: "Order",
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+        ],
+      },
+      {
+        name: "skills",
+        label: "Skills",
+        path: "src/content/skills",
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "category",
+            label: "Category",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "icon",
+            label: "Icon",
+            required: false,
+          },
+          {
+            type: "number",
+            name: "order",
+            label: "Order",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "skills",
+            label: "Skills",
+            list: true,
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+        ],
+      },
+      {
+        name: "education",
+        label: "Education",
+        path: "src/content/education",
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "degree",
+            label: "Degree",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "field",
+            label: "Field",
+            required: false,
+          },
+          {
+            type: "string",
+            name: "institution",
+            label: "Institution",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "logo",
+            label: "Logo",
+            required: false,
+          },
+          {
+            type: "string",
+            name: "startDate",
+            label: "Start Date",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "endDate",
+            label: "End Date",
+            required: false,
+          },
+          {
+            type: "boolean",
+            name: "current",
+            label: "Currently Enrolled?",
+            required: false,
+          },
+          {
+            type: "string",
+            name: "location",
+            label: "Location",
+            required: true,
+          },
+          {
+            type: "number",
+            name: "order",
+            label: "Order",
+            required: true,
           },
           {
             type: "rich-text",
@@ -289,98 +411,98 @@ export default defineConfig({
             label: "Title",
             isTitle: true,
             required: true,
-          }
+          },
         ],
       },
       {
-        label: 'Site Settings',
-        name: 'siteSettings',
-        path: 'content/settings',
-        format: 'json',
+        label: "Site Settings",
+        name: "siteSettings",
+        path: "content/settings",
+        format: "json",
         fields: [
           {
-            type: 'string',
-            label: 'Title',
-            name: 'title',
-            description: "Site Title"
+            type: "string",
+            label: "Title",
+            name: "title",
+            description: "Site Title",
           },
           {
-            type: 'string',
-            label: 'Email',
-            name: 'email',
-            description: "Email address"
+            type: "string",
+            label: "Email",
+            name: "email",
+            description: "Email address",
           },
           {
-            type: 'string',
-            label: 'Linkedin',
-            name: 'linkedin',
-            description: "Linkedin profile URL"
+            type: "string",
+            label: "Linkedin",
+            name: "linkedin",
+            description: "Linkedin profile URL",
           },
           {
-            type: 'object',
+            type: "object",
             name: "metadata",
             list: true,
             fields: [
               {
-                type: 'string',
-                name: 'name',
-                label: 'Meta name'
+                type: "string",
+                name: "name",
+                label: "Meta name",
               },
               {
-                type: 'string',
-                name: 'content',
-                label: 'Meta content'
-              }
-            ]
+                type: "string",
+                name: "content",
+                label: "Meta content",
+              },
+            ],
           },
-		  {
-            type: 'object',
+          {
+            type: "object",
             name: "menu",
             list: true,
             fields: [
               {
-                type: 'string',
-                name: 'name',
-                label: 'Name'
+                type: "string",
+                name: "name",
+                label: "Name",
               },
               {
-                type: 'string',
-                name: 'path',
-                label: 'Path'
-              }
-            ]
+                type: "string",
+                name: "path",
+                label: "Path",
+              },
+            ],
           },
-		  {
-            type: 'object',
+          {
+            type: "object",
             name: "experience",
             list: true,
             fields: [
               {
-                type: 'string',
-                name: 'dates',
-                label: 'Date Duration'
+                type: "string",
+                name: "dates",
+                label: "Date Duration",
               },
               {
-                type: 'string',
-                name: 'role',
-                label: 'Role'
+                type: "string",
+                name: "role",
+                label: "Role",
               },
-			  {
-                type: 'string',
-                name: 'company',
-                label: 'Company'
+              {
+                type: "string",
+                name: "company",
+                label: "Company",
               },
-			  {
-                type: 'string',
-                name: 'description',
-                label: 'Description'
+              {
+                type: "string",
+                name: "description",
+                label: "Description",
               },
-			  {
-                type: 'string',
-                name: 'logo',
-                label: 'Logo'
+              {
+                type: "string",
+                name: "logo",
+                label: "Logo",
               },
-            ]
+            ],
           },
         ],
         ui: {
@@ -389,6 +511,7 @@ export default defineConfig({
             delete: false,
           },
         },
-      },]
-	}
-})
+      },
+    ],
+  },
+});
