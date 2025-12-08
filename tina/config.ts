@@ -401,6 +401,53 @@ export default defineConfig({
         ],
       },
       {
+        name: "slides",
+        label: "Slides",
+        path: "src/content/slides",
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+            required: false,
+          },
+          {
+            type: "string",
+            name: "pdfPath",
+            label: "PDF Path",
+            required: true,
+            description: "Path to the PDF file (e.g., /resources/slides.pdf)",
+          },
+          {
+            type: "datetime",
+            name: "pubDate",
+            label: "Publication Date",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "thumbnail",
+            label: "Thumbnail",
+            required: false,
+            description: "Path to thumbnail image (optional)",
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+        ],
+      },
+      {
         name: "products",
         label: "Products",
         path: "content/products",

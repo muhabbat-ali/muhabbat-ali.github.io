@@ -83,6 +83,20 @@ const education = defineCollection({
   }),
 });
 
+const slides = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pdfPath: z.string(),
+    pubDate: z
+      .string()
+      .or(z.date())
+      .transform((val) => new Date(val)),
+    thumbnail: z.string().optional(),
+  }),
+});
+
 export const collections = {
   blog,
   projects,
@@ -90,4 +104,5 @@ export const collections = {
   experiences,
   skills,
   education,
+  slides,
 };
