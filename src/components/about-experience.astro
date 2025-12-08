@@ -1,5 +1,10 @@
 ---
-const { logo, dates, role, company, description } = Astro.props;
+const { logo, startDate, endDate, current, role, company, children } =
+  Astro.props;
+
+const dateRange = current
+  ? `${startDate} · Present`
+  : `${startDate} · ${endDate}`;
 ---
 
 <div class="relative group">
@@ -28,7 +33,7 @@ const { logo, dates, role, company, description } = Astro.props;
         <p
           class="text-xs font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400"
         >
-          {dates}
+          {dateRange}
         </p>
         <h3 class="text-lg font-bold text-neutral-900 dark:text-white">
           {role}
@@ -36,11 +41,15 @@ const { logo, dates, role, company, description } = Astro.props;
         <p class="text-sm font-medium text-neutral-700 dark:text-neutral-300">
           {company}
         </p>
-        <p
-          class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-1"
+        <div
+          class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-1 prose prose-sm dark:prose-invert max-w-none
+          prose-p:my-2 prose-p:leading-relaxed
+          prose-ul:my-2 prose-ul:list-disc prose-ul:pl-5
+          prose-li:my-1 prose-li:text-neutral-600 dark:prose-li:text-neutral-400
+          prose-strong:text-neutral-900 dark:prose-strong:text-white prose-strong:font-semibold"
         >
-          {description}
-        </p>
+          <slot />
+        </div>
       </div>
     </div>
   </div>

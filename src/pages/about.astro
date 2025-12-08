@@ -1,8 +1,13 @@
 ---
-import experiences from "../collections/experiences.json";
+import { getCollection } from "astro:content";
 import AboutExperience from "../components/about-experience.astro";
 // import PageHeading from "../components/page-heading.astro";
 import Layout from "../layouts/main.astro";
+
+// Get experiences and sort by order
+const experiences = (await getCollection("experiences")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <Layout showConsultation={true} title="About Me" meta={[]}>
@@ -105,7 +110,8 @@ import Layout from "../layouts/main.astro";
         </h2>
         <div class="space-y-8 pl-8">
           {
-            experiences.map((experience, loop) => {
+            experiences.map(async (experience, loop) => {
+              const { Content } = await experience.render();
               return (
                 <div
                   class={
@@ -115,12 +121,15 @@ import Layout from "../layouts/main.astro";
                   }
                 >
                   <AboutExperience
-                    dates={experience.dates}
-                    role={experience.role}
-                    company={experience.company}
-                    description={experience.description}
-                    logo={experience.logo}
-                  />
+                    startDate={experience.data.startDate}
+                    endDate={experience.data.endDate}
+                    current={experience.data.current}
+                    role={experience.data.role}
+                    company={experience.data.company}
+                    logo={experience.data.logo}
+                  >
+                    <Content />
+                  </AboutExperience>
                 </div>
               );
             })
