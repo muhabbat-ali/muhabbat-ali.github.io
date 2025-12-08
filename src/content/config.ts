@@ -57,4 +57,37 @@ const experiences = defineCollection({
     }),
 });
 
-export const collections = { blog, projects, services, experiences };
+const skills = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    category: z.string(),
+    icon: z.string().optional(),
+    order: z.number(),
+    skills: z.array(z.string()),
+  }),
+});
+
+const education = defineCollection({
+  type: "content",
+  schema: z.object({
+    degree: z.string(),
+    field: z.string(),
+    institution: z.string(),
+    logo: z.string().optional(),
+    startDate: z.string(),
+    endDate: z.string().optional(),
+    current: z.boolean().default(false),
+    location: z.string(),
+    order: z.number(),
+  }),
+});
+
+export const collections = {
+  blog,
+  projects,
+  services,
+  experiences,
+  skills,
+  education,
+};

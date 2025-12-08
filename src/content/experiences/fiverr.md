@@ -7,7 +7,7 @@ current: true
 order: 1
 ---
 
-I also work as a part-time freelancer on Fiverr and Upwork. I have worked with many long-term clients and agencies. I have worked on 20+ projects and delivered 100+ web development-related tasks. These are my top Clients.
+I also work as a part-time freelancer on Fiverr and Upwork. I have worked with many long-term clients and agencies. I have worked on 20+ projects and delivered 100+ web development-related tasks These are my top Clients.
 
 - **TheArtPeople (12/2021 - 08/2025)**
   - Worked as a freelance full-stack developer.
@@ -21,4 +21,4 @@ I also work as a part-time freelancer on Fiverr and Upwork. I have worked with m
 - **MarketAction (10/2022- 12/2022)**
   - Worked as a Full Stack developer with this US- based startup.
   - Worked on a FinTech application as a backend developer.
-  - Worked on technologies like Node.js, Discord Bot API, Google NLP, and TD Ameritrade API.
+  - Worked on technologies like Node.js, Discord Bot API, Google, NLP, and TD Ameritrade API.

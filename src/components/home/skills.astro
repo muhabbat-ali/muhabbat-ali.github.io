@@ -1,0 +1,57 @@
+---
+import { getCollection } from "astro:content";
+
+// Get skills and sort by order
+const skills = (await getCollection("skills")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="text-center space-y-4 mb-12">
+    <h2
+      class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white"
+    >
+      Skills & <span
+        class="bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent"
+        >Expertise</span
+      >
+    </h2>
+    <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+      Technologies and tools I use to bring ideas to life
+    </p>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    {
+      skills.map((skill) => (
+        <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10 dark:hover:shadow-primary-500/5 hover:-translate-y-1 p-6">
+          {/* Gradient Overlay on Hover */}
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+          {/* Content */}
+          <div class="relative z-10 space-y-4">
+            {/* Icon & Title */}
+            <div class="flex items-center gap-3">
+              <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 text-2xl group-hover:scale-110 transition-transform duration-300">
+                {skill.data.icon || "🔧"}
+              </div>
+              <h3 class="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                {skill.data.title}
+              </h3>
+            </div>
+
+            {/* Skills List */}
+            <div class="flex flex-wrap gap-2">
+              {skill.data.skills.map((skillName) => (
+                <span class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">
+                  {skillName}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

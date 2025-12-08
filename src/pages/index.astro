@@ -1,9 +1,17 @@
 ---
 import Button from "@/components/button";
 import Projects from "@/components/home/projects";
+import Skills from "@/components/home/skills";
 import Separator from "@/components/home/separator";
+import EducationItem from "../components/education-item.astro";
+import { getCollection } from "astro:content";
 // import Blogs from "../components/home/blogs.astro";
 import Layout from "@/layouts/main";
+
+// Get education and sort by order
+const education = (await getCollection("education")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <Layout
@@ -228,12 +236,12 @@ import Layout from "@/layouts/main";
                     <!-- <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div> -->
                     <!-- <span class="text-sm font-semibold text-neutral-900 dark:text-white">
                        </span> -->
-                    📍
-                    <img
+                    📍 Paris, France
+                    <!-- <img
                       src="/assets/icons/france-flag.png"
                       class="w-6 h-auto"
                       alt="France flag"
-                    />
+                    /> -->
                   </div>
                 </div>
               </div>
@@ -262,6 +270,36 @@ import Layout from "@/layouts/main";
   <!-- Projects Section -->
   <Separator text="Check out my projects" />
   <Projects />
+
+  <!-- Skills Section -->
+  <Separator text="Skills & Expertise" />
+  <Skills />
+
+  <!-- Education Section -->
+  <Separator text="Education" />
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="space-y-6">
+      {
+        education.map(async (edu) => {
+          const { Content } = await edu.render();
+          return (
+            <EducationItem
+              degree={edu.data.degree}
+              field={edu.data.field}
+              institution={edu.data.institution}
+              logo={edu.data.logo}
+              startDate={edu.data.startDate}
+              endDate={edu.data.endDate}
+              current={edu.data.current}
+              location={edu.data.location}
+            >
+              <Content />
+            </EducationItem>
+          );
+        })
+      }
+    </div>
+  </section>
 
   <!-- <Separator text="Some of my writing" /> -->
   <!-- <Blogs /> -->

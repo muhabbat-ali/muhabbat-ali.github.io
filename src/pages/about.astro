@@ -1,11 +1,17 @@
 ---
 import { getCollection } from "astro:content";
 import AboutExperience from "../components/about-experience.astro";
+import EducationItem from "../components/education-item.astro";
 // import PageHeading from "../components/page-heading.astro";
 import Layout from "../layouts/main.astro";
 
 // Get experiences and sort by order
 const experiences = (await getCollection("experiences")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+// Get education and sort by order
+const education = (await getCollection("education")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 ---
@@ -131,6 +137,39 @@ const experiences = (await getCollection("experiences")).sort(
                     <Content />
                   </AboutExperience>
                 </div>
+              );
+            })
+          }
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="mb-12">
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white mb-8 flex items-center gap-3"
+        >
+          <span
+            class="w-1 h-8 bg-gradient-to-b from-primary-500 to-accent-500 rounded-full"
+          ></span>
+          Education
+        </h2>
+        <div class="space-y-6">
+          {
+            education.map(async (edu) => {
+              const { Content } = await edu.render();
+              return (
+                <EducationItem
+                  degree={edu.data.degree}
+                  field={edu.data.field}
+                  institution={edu.data.institution}
+                  logo={edu.data.logo}
+                  startDate={edu.data.startDate}
+                  endDate={edu.data.endDate}
+                  current={edu.data.current}
+                  location={edu.data.location}
+                >
+                  <Content />
+                </EducationItem>
               );
             })
           }
