@@ -2,46 +2,182 @@
 import Layout from "../layouts/main.astro";
 ---
 
-<Layout showConsultation={true} title="My Projects" meta={[]}>
-  <section>
-    <h1 class="text-2xl dark:text-white text-center mt-10">Contact Me!</h1>
-    <div>
-      <form
-        class="flex flex-col px-20 [&_*]:my-2"
-        action="https://api.web3forms.com/submit"
-        method="POST"
-        id="form"
+<Layout showConsultation={true} title="Contact Me" meta={[]}>
+  <div class="relative overflow-hidden">
+    <!-- Background Decoration -->
+    <div class="absolute inset-0 -z-10">
+      <div
+        class="absolute top-20 left-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"
       >
-        <input
-          class="border"
-          type="hidden"
-          name="access_key"
-          value="26c4f303-4788-47b1-9573-55c6239bbeac"
-        />
-        <h3 class="dark:text-white">Name</h3>
-        <input class="border" type="text" name="name" required />
-        <h3 class="dark:text-white">Email</h3>
-        <input class="border" type="email" name="email" required />
-        <h3 class="dark:text-white">Message</h3>
-        <textarea class="border" name="message" required></textarea>
-        <input
-          type="checkbox"
-          name="botcheck"
-          class="hidden"
-          style="display: none;"
-        />
-        <div class="flex justify-center">
-          <button
-            type="submit"
-            class="border px-10 py-2 bg-blue-500 hover:bg-blue-400 text-white font-normal text-base"
-            >Submit Form</button
-          >
-        </div>
-      </form>
+      </div>
+      <div
+        class="absolute bottom-20 right-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"
+      >
+      </div>
     </div>
 
-    <div id="result"></div>
-  </section>
+    <section
+      class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
+    >
+      <!-- Header -->
+      <div class="text-center space-y-6 mb-12 animate-fade-in">
+        <div
+          class="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800"
+        >
+          <span
+            class="text-sm font-semibold text-primary-700 dark:text-primary-300"
+            >Get in touch</span
+          >
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+          <span class="block text-neutral-900 dark:text-white">Let's Work</span>
+          <span
+            class="block bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent"
+          >
+            Together
+          </span>
+        </h1>
+
+        <p
+          class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
+        >
+          Have a project in mind? Let's discuss how I can help bring your ideas
+          to life.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <div class="glass rounded-3xl p-8 sm:p-10 animate-scale-in">
+        <form
+          class="space-y-6"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          id="form"
+        >
+          <input
+            type="hidden"
+            name="access_key"
+            value="26c4f303-4788-47b1-9573-55c6239bbeac"
+          />
+
+          <!-- Name Field -->
+          <div class="space-y-2">
+            <label
+              for="name"
+              class="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
+            >
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-200 outline-none"
+              placeholder="Your name"
+            />
+          </div>
+
+          <!-- Email Field -->
+          <div class="space-y-2">
+            <label
+              for="email"
+              class="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
+            >
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-200 outline-none"
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          <!-- Message Field -->
+          <div class="space-y-2">
+            <label
+              for="message"
+              class="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
+            >
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="6"
+              class="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-200 outline-none resize-none"
+              placeholder="Tell me about your project..."></textarea>
+          </div>
+
+          <!-- Bot Check -->
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="hidden"
+            style="display: none;"
+          />
+
+          <!-- Submit Button -->
+          <div class="pt-4">
+            <button
+              type="submit"
+              class="w-full inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-primary-600 to-accent-500 rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
+            >
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              Send Message
+            </button>
+          </div>
+        </form>
+
+        <!-- Result Message -->
+        <div id="result" class="mt-6 text-center hidden"></div>
+      </div>
+
+      <!-- Alternative Contact -->
+      <div class="mt-12 text-center space-y-4 animate-fade-in">
+        <p class="text-neutral-600 dark:text-neutral-400">
+          Or reach out directly at
+        </p>
+        <a
+          href="mailto:hello@muhabbat.dev"
+          class="inline-flex items-center gap-2 text-lg font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path>
+          </svg>
+          hello@muhabbat.dev
+        </a>
+      </div>
+    </section>
+  </div>
+
   <!-- Horizontal -->
   <ins
     class="adsbygoogle"
@@ -53,15 +189,20 @@ import Layout from "../layouts/main.astro";
 </Layout>
 
 <script>
-  const form: any = document.getElementById("form")!;
-  const result = document.getElementById("result")!;
+  const form = document.getElementById("form") as HTMLFormElement;
+  const result = document.getElementById("result") as HTMLDivElement;
 
   form.addEventListener("submit", function (e: SubmitEvent) {
     e.preventDefault();
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
-    result.innerHTML = "Please wait...";
+
+    result.classList.remove("hidden");
+    result.className =
+      "mt-6 text-center p-4 rounded-xl bg-primary-100 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800";
+    result.innerHTML =
+      '<p class="text-primary-700 dark:text-primary-300 font-semibold">Sending your message...</p>';
 
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -74,22 +215,29 @@ import Layout from "../layouts/main.astro";
       .then(async (response) => {
         let json = await response.json();
         if (response.status == 200) {
+          result.className =
+            "mt-6 text-center p-4 rounded-xl bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800";
           result.innerHTML =
-            "Message submitted successfully! I will get back to you";
+            '<p class="text-green-700 dark:text-green-300 font-semibold">✓ Message sent successfully! I will get back to you soon.</p>';
         } else {
           console.log(response);
-          result.innerHTML = json.message;
+          result.className =
+            "mt-6 text-center p-4 rounded-xl bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800";
+          result.innerHTML = `<p class="text-red-700 dark:text-red-300 font-semibold">${json.message}</p>`;
         }
       })
       .catch((error) => {
         console.log(error);
-        result.innerHTML = "Something went wrong!";
+        result.className =
+          "mt-6 text-center p-4 rounded-xl bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800";
+        result.innerHTML =
+          '<p class="text-red-700 dark:text-red-300 font-semibold">Something went wrong! Please try again.</p>';
       })
       .then(function () {
         form.reset();
         setTimeout(() => {
-          result.style.display = "none";
-        }, 3000);
+          result.classList.add("hidden");
+        }, 5000);
       });
   });
 </script>

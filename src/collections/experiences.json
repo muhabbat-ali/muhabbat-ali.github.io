@@ -1,23 +1,23 @@
 [
-	{
-		"dates": "June 2021 · Present",
-		"role": "Web Developer",
-		"company": "Fiverr",
-		"description": "Offering full stack web development services from small to medium projects",
-		"logo": "/assets/images/experiences/fiverr.png"
-	},
-	{
-		"dates": "July 2022 · Present",
-		"role": "Full Stack Engineer",
-		"company": "Upwork",
-		"description": "Working with comopany's and individual clients to deliver best development services",
-		"logo": "/assets/images/experiences/upwork.png"
-	},
-	{
-		"dates": "May 2022 · June 2024 ",
-		"role": "Full Stack Web Developer",
-		"company": "The Art People",
-		"description": "The Art People is an institute educating kids to learn graphics and animation. I've created sevral tools and websites for this company. such as motionlayer, animate-q, augle.io",
-		"logo": "/assets/images/experiences/the-art-people.png"
-	}
+  {
+    "dates": "June 2021 · Present",
+    "role": "Web Developer",
+    "company": "Fiverr",
+    "description": "Offering full stack web development services from small to medium projects",
+    "logo": "/assets/images/experiences/fiverr.png"
+  },
+  {
+    "dates": "July 2022 · Present",
+    "role": "Full Stack Engineer",
+    "company": "Upwork",
+    "description": "Working with company's and individual clients to deliver best development services",
+    "logo": "/assets/images/experiences/upwork.png"
+  },
+  {
+    "dates": "May 2022 · June 2024 ",
+    "role": "Full Stack Web Developer",
+    "company": "The Art People",
+    "description": "The Art People is an institute educating kids to learn graphics and animation. I've created sevral tools and websites for this company. such as motionlayer, animate-q, augle.io",
+    "logo": "/assets/images/experiences/the-art-people.png"
+  }
 ]

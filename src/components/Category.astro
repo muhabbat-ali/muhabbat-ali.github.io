@@ -1,22 +1,25 @@
 ---
-import { cn, sluglify } from '@/utils'
+import { cn, sluglify } from "@/utils";
 
-const { name = 'View All', activeCategory } = Astro.props
-const currentPath = Astro.url.pathname
-const unsluglifyNameCategory = sluglify(name.toLowerCase())
+const { name = "View All", activeCategory } = Astro.props;
+const currentPath = Astro.url.pathname;
+const unsluglifyNameCategory = sluglify(name.toLowerCase());
 
 const isActive =
-	activeCategory?.toLocaleLowerCase() === unsluglifyNameCategory ||
-	(currentPath === '/blog' && name === 'View All')
+  activeCategory?.toLocaleLowerCase() === unsluglifyNameCategory ||
+  (currentPath === "/blog" && name === "View All");
 ---
 
 <a
-	href={name === 'View All' ? '/blog' : sluglify(`/blog/category/${unsluglifyNameCategory}/1`)}
-	class={cn(
-		`text-secondary dark:text-primary hover:text-secondary-200 dark:hover:text-primary-200 border-secondary dark:border-primary hover:border-secondary dark:hover:border-primary pb-2.5 first-letter:uppercase font-medium  border-b-2 border-opacity-0 dark:border-opacity-0 hover:border-opacity-100 transition-colors duration-150 ease-linear  `,
-		isActive &&
-			`text-secondary-200 dark:text-primary-200 border-b-2 z-10 dark:border-opacity-100 border-opacity-100`
-	)}
+  href={name === "View All"
+    ? "/blog"
+    : sluglify(`/blog/category/${unsluglifyNameCategory}/1`)}
+  class={cn(
+    `inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300`,
+    isActive
+      ? "bg-gradient-to-r from-primary-600 to-accent-500 text-white shadow-lg shadow-primary-500/30 scale-105"
+      : "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:scale-105",
+  )}
 >
-	{name}
+  {name}
 </a>

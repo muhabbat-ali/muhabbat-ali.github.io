@@ -2,21 +2,46 @@
 const { logo, dates, role, company, description } = Astro.props;
 ---
 
-<div class="relative flex flex-col justify-start pl-12">
-  <div
-    class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-white border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700"
-  >
-    <img src={logo} alt={company} class="w-8 h-8" />
+<div class="relative group">
+  <!-- Timeline Dot -->
+  <div class="absolute -left-8 top-2 flex items-center justify-center">
+    <div
+      class="w-4 h-4 rounded-full bg-gradient-to-r from-primary-600 to-accent-500 ring-4 ring-white dark:ring-neutral-950 group-hover:scale-125 transition-transform duration-300"
+    >
+    </div>
   </div>
 
-  <p
-    class="text-xs uppercase text-neutral-400 dark:text-neutral-500 trackign-widest"
+  <!-- Content Card -->
+  <div
+    class="glass rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
   >
-    {dates}
-  </p>
-  <h3 class="my-1 text-lg font-bold dark:text-neutral-100">{role}</h3>
-  <p class="mb-1 text-sm font-medium dark:text-neutral-300">{company}</p>
-  <p class="text-sm font-light text-neutral-600 dark:text-neutral-400">
-    {description}
-  </p>
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div
+        class="flex-shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform duration-300"
+      >
+        <img src={logo} alt={company} class="w-8 h-8 object-contain" />
+      </div>
+
+      <!-- Details -->
+      <div class="flex-1 space-y-2">
+        <p
+          class="text-xs font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400"
+        >
+          {dates}
+        </p>
+        <h3 class="text-lg font-bold text-neutral-900 dark:text-white">
+          {role}
+        </h3>
+        <p class="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+          {company}
+        </p>
+        <p
+          class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-1"
+        >
+          {description}
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

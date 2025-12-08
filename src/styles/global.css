@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-	/* body {
-		transition: background-color 0.5s ease;
-	} */
+	body {
+		transition: background-color 0.3s ease;
+		@apply bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100;
+	}
 
 	.prose code {
 		@apply text-base;
@@ -18,55 +19,98 @@
 	h4,
 	h5,
 	h6 {
-		@apply text-zinc-800 dark:text-zinc-100   !important;
+		@apply text-neutral-900 dark:text-neutral-100 !important;
 	}
 
 	html.dark .shiki,
 	html.dark .shiki span {
-	  color: var(--shiki-dark) !important;
-	  background-color: theme(colors.gray.900) !important;
+		color: var(--shiki-dark) !important;
+		background-color: theme(colors.neutral.900) !important;
 	}
 }
 
-html, body {
-  overflow-x: hidden !important;
+@layer components {
+	/* Glass morphism effect */
+	.glass {
+		@apply backdrop-blur-xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200/50 dark:border-neutral-800/50;
+	}
+
+	/* Gradient text */
+	.gradient-text {
+		@apply bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500 bg-clip-text text-transparent;
+	}
+
+	/* Animated gradient background */
+	.gradient-bg {
+		@apply bg-gradient-to-r from-primary-600 via-accent-500 to-primary-600 bg-gradient-size animate-gradient;
+	}
+
+	/* Modern shadow */
+	.shadow-modern {
+		@apply shadow-xl shadow-primary-500/10 dark:shadow-primary-500/5;
+	}
+
+	/* Card hover effect */
+	.card-hover {
+		@apply transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10 dark:hover:shadow-primary-500/5 hover:-translate-y-1;
+	}
+
+	/* Button styles */
+	.btn {
+		@apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-neutral-900;
+	}
+
+	.btn-primary {
+		@apply btn text-white bg-gradient-to-r from-primary-600 to-accent-500 shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 hover:scale-105 focus:ring-primary-500;
+	}
+
+	.btn-secondary {
+		@apply btn text-neutral-900 dark:text-white bg-white dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-500 hover:shadow-lg focus:ring-primary-500;
+	}
+
+	.btn-disabled {
+		@apply btn cursor-not-allowed opacity-50 bg-neutral-300 dark:bg-neutral-700 text-neutral-500;
+	}
+
+	/* Country flag */
+	.pakistan {
+		width: 20px;
+		height: auto;
+		vertical-align: middle;
+	}
 }
 
-img, video {
-  max-width: 100%;
-  height: auto;
-}
-.glass {
-	background: rgba(57, 56, 56, 0.52);
-	backdrop-filter: blur(13px) saturate(150%);
-	-webkit-backdrop-filter: blur(13px) saturate(150%);
-	z-index: -1;
+@layer utilities {
+	/* Smooth scrolling */
+	html {
+		scroll-behavior: smooth;
+	}
+
+	/* Hide scrollbar but keep functionality */
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+	.scrollbar-hide {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
 }
 
-.shadow {
-	box-shadow: -5px 3px 8px 1px rgba(0, 0, 0, 0.12);
+html,
+body {
+	overflow-x: hidden !important;
 }
 
-body{
+img,
+video {
+	max-width: 100%;
+	height: auto;
+}
+
+body {
 	color-scheme: light dark;
 }
 
-svg{
-	@apply stroke-secondary text-secondary dark:stroke-primary dark:text-primary
-}
-
-.btn{
-    @apply block px-4 py-2 mt-5 text-xs font-semibold text-center duration-300 ease-out border rounded dark:text-white
-}
-
-.btn-active{
-    @apply bg-neutral-900 dark:bg-neutral-100 dark:hover:border-neutral-300 dark:text-neutral-800 dark:hover:bg-neutral-950 dark:hover:text-neutral-100 text-neutral-100 border-neutral-900 hover:bg-white hover:text-neutral-900 cursor-pointer
-}
-.btn-disabled{
-    @apply cursor-not-allowed text-black  dark:bg-gray-300
-}
-.pakistan {
-    width: 20px;
-    height: auto; 
-    vertical-align: middle
+svg {
+	@apply stroke-neutral-900 text-neutral-900 dark:stroke-neutral-100 dark:text-neutral-100 transition-colors;
 }

@@ -15,5 +15,9 @@
   {
     "name": "About",
     "url": "/about"
+  },
+  {
+    "name": "Resume",
+    "url": "/resources/software-engineer.pdf"
   }
 ]

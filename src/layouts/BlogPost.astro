@@ -66,54 +66,107 @@ const { title, description, pubDate, heroImage, tags } = data;
     },
   }}
 >
-  <article
-    class="px-4 sm:mx-auto sm:max-w-2xl lg:px-0 antialiased md:max-w-6xl mt-4 overflow-hidden md:overflow-visible"
-  >
-    <header class="mb-3 flex flex-col justify-center items-center gap-6">
-      <div class="flex flex-col gap-2 dark:text-white">
-        <div class="flex items-center justify-center gap-x-1">
-          <p class="text-center text-sm text-opacity-50">
-            Published <FormattedDate date={pubDate} />
-          </p>
-          <p class="text-center text-sm text-opacity-50 font-bold">
-            - {readTime}
-          </p>
-        </div>
-        <h1 class="text-center text-4xl md:text-6xl md:pb-2.5 font-semibold">
-          {title}
-        </h1>
-      </div>
-
+  <div class="relative overflow-hidden">
+    <!-- Background Decoration -->
+    <div class="absolute inset-0 -z-10">
       <div
-        class="flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5"
+        class="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"
       >
-        {tags.map((tag: string) => <Tag tag={tag} />)}
       </div>
-    </header>
+      <div
+        class="absolute bottom-0 left-0 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl"
+      >
+      </div>
+    </div>
 
-    <>
+    <article
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 animate-fade-in"
+    >
+      <!-- Header -->
+      <header class="max-w-4xl mx-auto mb-12 space-y-8">
+        <!-- Meta Info -->
+        <div class="flex items-center justify-center gap-4 text-sm">
+          <div class="flex items-center gap-2 glass px-4 py-2 rounded-xl">
+            <svg
+              class="w-4 h-4 text-primary-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
+            </svg>
+            <span class="text-neutral-700 dark:text-neutral-300">
+              <FormattedDate date={pubDate} />
+            </span>
+          </div>
+          <div class="flex items-center gap-2 glass px-4 py-2 rounded-xl">
+            <svg
+              class="w-4 h-4 text-accent-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span class="text-neutral-700 dark:text-neutral-300 font-semibold"
+              >{readTime}</span
+            >
+          </div>
+        </div>
+
+        <!-- Title -->
+        <h1
+          class="text-4xl sm:text-5xl lg:text-6xl font-bold text-center leading-tight"
+        >
+          <span
+            class="bg-gradient-to-r from-primary-600 via-accent-500 to-primary-600 bg-clip-text text-transparent"
+          >
+            {title}
+          </span>
+        </h1>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap justify-center items-center gap-2">
+          {tags.map((tag: string) => <Tag tag={tag} />)}
+        </div>
+      </header>
+
+      <!-- Hero Image -->
       {
         heroImage && (
-          <Image
-            src={heroImage}
-            width={1000}
-            height={500}
-            quality={100}
-            format="jpg"
-            loading="eager"
-            class="rounded-md w-full max-h-[300px]  md:max-h-[500px] my-8 object-cover"
-            alt={`img of ${title}`}
-          />
+          <div class="max-w-5xl mx-auto mb-12 animate-scale-in">
+            <div class="relative overflow-hidden rounded-3xl border-4 border-white dark:border-neutral-800 shadow-2xl">
+              <Image
+                src={heroImage}
+                width={1000}
+                height={500}
+                quality={100}
+                format="jpg"
+                loading="eager"
+                class="w-full h-[500px] object-cover"
+                alt={`Featured image for ${title}`}
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent" />
+            </div>
+          </div>
         )
       }
-    </>
 
-    <hr />
-
-    <div class="px-2">
-      <slot />
-    </div>
-  </article>
+      <!-- Content -->
+      <div class="max-w-5xl mx-auto">
+        <slot />
+      </div>
+    </article>
+  </div>
 </MainLayout>
 
 <script>

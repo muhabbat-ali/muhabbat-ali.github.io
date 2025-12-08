@@ -1,16 +1,21 @@
 ---
-import Title from './Title.astro'
+import Title from "./Title.astro";
 // import Shape from './icons/Shape.astro'
 type Props = {
-	title: string
-}
+  title: string;
+};
 
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
-<div class='flex justify-start items-center gap-2 title'>
-	<!-- <Shape /> -->
-	<!-- <img src='/logo.png' class='hidden dark:block w-14 h-14 -mb-1' />
-	<img src='/logo-light.png' class='block dark:hidden w-14 h-14 -mb-1' /> -->
-	<Title>{title}</Title>
+<div class="flex justify-center items-center gap-3 mb-8 title">
+  <div
+    class="w-1 h-12 bg-gradient-to-b from-primary-500 to-accent-500 rounded-full"
+  >
+  </div>
+  <Title>{title}</Title>
+  <div
+    class="w-1 h-12 bg-gradient-to-b from-accent-500 to-primary-500 rounded-full"
+  >
+  </div>
 </div>
