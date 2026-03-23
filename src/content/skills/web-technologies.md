@@ -4,10 +4,11 @@ category: "Web Development"
 icon: "🌐"
 order: 2
 skills:
-  - "HTML/CSS"
-  - "ReactJS"
-  - "Next.js"
+  - "HTML/CSS/JS"
+  - "React.js"
+  - "Node.js"
   - "Laravel"
+  - "Next.js"
   - "Nest.js"
 ---
 

@@ -7,18 +7,21 @@ current: true
 order: 1
 ---
 
-I also work as a part-time freelancer on Fiverr and Upwork. I have worked with many long-term clients and agencies. I have worked on 20+ projects and delivered 100+ web development-related tasks These are my top Clients.
+I've been working as a Freelance Full Stack Developer on platforms like Fiverr and Upwork, delivering over 15 projects and 100+ tasks for many startups and clients. Some the the clinent and agencies I worked for are
 
-- **TheArtPeople (12/2021 - 08/2025)**
-  - Worked as a freelance full-stack developer.
-  - Delivered 6+ web applications and 1 mobile app.
-  - Worked on technologies like HTML, CSS, JavaScript, ReactJS, NodeJS, Laravel, Supabase, and Flutter. Git,
-  - Github Actions, Cloudflare, and cPanel.
-- **Whaaat Studio (06/2021 - 10/2021)**
-  - worked as a backend developer with Whaaat Studio.
-  - Implemented the backend functionalities for their projects.
-  - Worked on technologies like React.js, Firebase, Node.js, Elasticsearch, and Kibana.
-- **MarketAction (10/2022- 12/2022)**
-  - Worked as a Full Stack developer with this US- based startup.
-  - Worked on a FinTech application as a backend developer.
-  - Worked on technologies like Node.js, Discord Bot API, Google, NLP, and TD Ameritrade API.
+- **TheArtPeople (December 2021 - August 2025)**
+- Freelance Full Stack Developer : I worked with TheArtPeople as a Contract Freelancer where I
+- Delivered 6+ web applications and 1 mobile application.
+- Maintained deployments and cloud environments.
+- Technologies: HTML/CSS/JS, TypeScript, React.js, Node.js, Laravel, Supabase, Flutter, Git, GitHub Actions, Cloudflare, cPanel.
+- **Whaaat Studio (June 2021 - October 2021)**
+- Backend Developer : I worked with this Agency as a backend developer where I,
+- Worked on different projects and contributed to different projects.
+- Implemented APIs for fronteds apps using Node.js, Express.js.
+- Technologies: React.js, React Native, Firebase, Node.js, Elasticsearch, Kibana.
+- **MarketAction (October 2022 - December 2022)**
+- Full Stack Developer : Collaborated with a FinTech startup where I
+- Implemeneted charts for different types of trading like Option Trading, and Stock Trading.
+- Contributed to the product development including UI development and API integrations.
+- Developed Discord Bot with Google NLP model tranining.
+- Technologies: React.js, Node.js, Firebase, Discord Bot API, Google NLP, TD Ameritrade API.
